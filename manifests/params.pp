@@ -135,7 +135,7 @@ class logstashforwarder::params {
       $service_hasrestart = true
       $service_hasstatus  = true
       $service_pattern    = $service_name
-      $service_providers  = [ 'init' ]
+      $service_providers  = [ 'init', 'upstart' ]
       $defaults_location  = '/etc/default'
     }
     'Darwin': {
