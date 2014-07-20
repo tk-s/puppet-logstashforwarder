@@ -119,14 +119,15 @@ define logstashforwarder::service::init{
 
   }
 
-  # action
-  service { $name:
-    ensure     => $service_ensure,
-    enable     => $service_enable,
-    name       => $logstashforwarder::params::service_name,
-    hasstatus  => $logstashforwarder::params::service_hasstatus,
-    hasrestart => $logstashforwarder::params::service_hasrestart,
-    pattern    => $logstashforwarder::params::service_pattern,
+  if $logstashforwarder::ensure != 'present' {
+    # action
+    service { $name:
+      ensure     => $service_ensure,
+      enable     => $service_enable,
+      name       => $logstashforwarder::params::service_name,
+      hasstatus  => $logstashforwarder::params::service_hasstatus,
+      hasrestart => $logstashforwarder::params::service_hasrestart,
+      pattern    => $logstashforwarder::params::service_pattern,
+    }
   }
-
 }
